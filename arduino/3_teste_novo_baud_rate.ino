@@ -1,4 +1,4 @@
-// Programa: Trocando a baud rate padrão por 9600
+// Programa: Testando o ESP8266 com baud rate setado para 9600
 
 #include <SoftwareSerial.h>
 
@@ -15,19 +15,15 @@ SoftwareSerial esp8266(2, 3);
 void setup()
 {
   Serial.begin(9600);
-  esp8266.begin(115200); // baud rate padrao do ESP8266
+  esp8266.begin(9600); // novo baud rate do esp
    
   Serial.println("** Verificando conexao **");
   Serial.println();
-  delay(2000);
   sendData("AT\r\n", 2000, DEBUG);
-  delay(2000);
    
-  Serial.println("** Seta ESP8266 baud rate para 9600 **");
+  Serial.println("** Versao de firmware **");
   Serial.println();
-  delay(2000);
-  sendData("AT+UART_DEF=9600,8,1,0,0\r\n", 2000, DEBUG);
-  delay(5000);
+  sendData("AT+GMR\r\n", 2000, DEBUG);
    
   Serial.println();
   Serial.println("*** Final ***");
@@ -58,6 +54,6 @@ String sendData(String command, const int timeout, boolean debug)
 }
 
 /**
- * Com esse código, foi possível setar a baud rate do ESP8266
- * para 9600, entrando em sincronia com o Arduino.
+ * Com esse código foi possível observar um funcionamento correto do módulo
+ * com as respostas perfeitas mesmo sem o delay do Arduino entre requests.
  */

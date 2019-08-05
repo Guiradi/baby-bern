@@ -26,7 +26,7 @@
    Serial.println("** Versao de firmware **");
    Serial.println();
    delay(2000);
-   sendData("AT+GMR\r\n", 2000, DEBUG); //rst
+   sendData("AT+GMR\r\n", 2000, DEBUG);
    
    Serial.println();
    Serial.println("*** Final ***");
