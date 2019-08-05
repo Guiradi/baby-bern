@@ -81,7 +81,7 @@ void loop() {
 
       String closeCommand = "AT+CIPCLOSE=";
       closeCommand += connectionId; // append connection id
-      closeCommand += "rn";
+      closeCommand += "\r\n";
  
       sendData(closeCommand, 3000, DEBUG);
     }
